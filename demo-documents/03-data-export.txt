@@ -1,0 +1,4 @@
+NimbusDesk fictional demo help centre — Data export
+This document contains synthetic rules for a local demonstration.
+
+Editors and Owners can export published documents as Markdown. Only Owners can export the workspace membership list. Exports run as a background task and show pending, running, completed or failed status. A failed export may be retried. The system must not display an export as completed before a downloadable file exists. A Viewer cannot export documents or the membership list.

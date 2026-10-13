@@ -220,6 +220,9 @@ class MultiProviderLLM:
             llm = OpenAILLM()
         elif name == "anthropic":
             llm = AnthropicLLM()
+        elif name == "codex":
+            from app.generation.codex_provider import CodexLLM
+            llm = CodexLLM()
         else:
             raise ValueError(f"Unknown LLM provider: {name}")
         self._cache[name] = llm
@@ -234,6 +237,8 @@ class MultiProviderLLM:
         json_mode: bool = False,
         preferred: str | None = None,
     ) -> LLMResponse:
+        if preferred and preferred not in self.order:
+            raise ValueError("Requested LLM provider is not enabled in LLM_FALLBACK_ORDER")
         order = [preferred, *self.order] if preferred else list(self.order)
         # de-dup while preserving order
         seen: set[str] = set()

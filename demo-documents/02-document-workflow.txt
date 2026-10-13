@@ -1,0 +1,4 @@
+NimbusDesk fictional demo help centre — Document workflow
+This document contains synthetic rules for a local demonstration.
+
+A document begins as a draft. An Editor reviews its title, content and source links before publication. Published documents are visible to Viewers. Editing a published document creates a new draft revision; the previous published revision remains visible until the new revision is published. Archiving hides the document from normal search but retains its revision history for Owners and Editors.

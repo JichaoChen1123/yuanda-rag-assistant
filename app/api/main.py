@@ -71,7 +71,8 @@ def health() -> dict:
     for name in settings.llm_fallback_order:
         try:
             llm = get_llm()._get(name)
-            providers[name] = {"available": True, "model": llm.model}
+            providers[name] = {"available": llm.health() if name == "codex" else True,
+                               "model": llm.model}
         except Exception as e:
             providers[name] = {"available": False, "error": str(e)}
     return {

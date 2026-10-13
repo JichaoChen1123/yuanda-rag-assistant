@@ -1,0 +1,4 @@
+NimbusDesk fictional demo help centre — Workspace roles
+This document contains synthetic rules for a local demonstration, not a real company's policies.
+
+NimbusDesk has three workspace roles: Viewer, Editor and Owner. A Viewer can read published documents and search the help centre, but cannot change content. An Editor can create drafts, edit documents and publish changes. An Editor cannot manage billing or change workspace ownership. An Owner can manage workspace membership, assign roles and manage billing. Every workspace must retain at least one Owner.

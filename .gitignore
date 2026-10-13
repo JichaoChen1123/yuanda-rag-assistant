@@ -6,6 +6,7 @@ __pycache__/
 venv/
 env/
 .pytest_cache/
+pytest-cache-files-*/
 .mypy_cache/
 .ruff_cache/
 
@@ -31,3 +32,7 @@ frontend/react/dist/
 
 # Logs
 *.log
+
+# Local ChatGPT subscription runtime (never publish account/runtime files)
+.private/
+.cache/

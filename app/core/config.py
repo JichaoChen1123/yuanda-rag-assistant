@@ -62,8 +62,13 @@ class Settings(BaseSettings):
     rerank_top_n: int = 5
 
     # ---- LLM Providers ----
-    llm_provider: Literal["ollama", "openai", "anthropic"] = "ollama"
+    llm_provider: Literal["ollama", "openai", "anthropic", "codex"] = "ollama"
     llm_fallback_order: list[str] = ["ollama", "openai", "anthropic"]
+
+    # Optional subscription adapter; the original RAG pipeline is unchanged.
+    codex_binary: str = "codex"
+    codex_model: str = ""
+    codex_timeout: int = 180
 
     ollama_base_url: str = "http://localhost:11434"
     ollama_model: str = "mistral"

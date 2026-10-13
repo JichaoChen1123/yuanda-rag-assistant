@@ -1,5 +1,7 @@
 # Enterprise RAG System
 
+> This fork preserves the complete [upstream project](https://github.com/PiriTnz/enterprise-rag-system) and MIT license. It adds an optional official Codex CLI / ChatGPT subscription provider and fictional demo documents. See [Plus setup and verified demo](RUN_PLUS.md). The original RAG architecture is retained.
+
 A production-style **Retrieval-Augmented Generation** platform for enterprise and internal documents. Built to answer questions over internal PDFs, reports, technical docs, and planning files with **hybrid retrieval**, **cross-encoder reranking**, **grounded citations**, **structured outputs**, and a built-in **evaluation pipeline**.
 
 This is not "chat with PDF." The design priorities are retrieval quality, grounding, hallucination reduction, and an architecture you could actually run as internal company AI infrastructure.

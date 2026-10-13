@@ -31,12 +31,12 @@ def api_get(path: str) -> Any:
         return r.json()
 
 
-def api_post(path: str, payload: dict | None = None, files=None) -> Any:
+def api_post(path: str, payload: dict | None = None, files=None, params=None) -> Any:
     with httpx.Client(timeout=300) as c:
         if files:
-            r = c.post(f"{API_URL}{path}", files=files)
+            r = c.post(f"{API_URL}{path}", files=files, params=params)
         else:
-            r = c.post(f"{API_URL}{path}", json=payload or {})
+            r = c.post(f"{API_URL}{path}", json=payload or {}, params=params)
         r.raise_for_status()
         return r.json()
 
@@ -101,7 +101,7 @@ with tab_query:
     col_a, col_b = st.columns(2)
     with col_a:
         provider = st.selectbox("Provider override",
-                                ["auto", "ollama", "openai", "anthropic"])
+                                ["auto", "codex"])
     with col_b:
         rerank = st.checkbox("Enable reranking", value=True)
 
@@ -195,7 +195,7 @@ with tab_eval:
     if st.button("Run evaluation"):
         with st.spinner("Running…"):
             try:
-                summary = api_post("/api/v1/evaluate", {})
+                summary = api_post("/api/v1/evaluate", params={"cases_path": cases_path})
             except Exception as e:
                 st.error(str(e))
                 summary = None

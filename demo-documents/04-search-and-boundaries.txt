@@ -1,0 +1,4 @@
+NimbusDesk fictional demo help centre — Answers and information boundaries
+This document contains synthetic rules for a local demonstration.
+
+The help centre supports keyword search and document questions. An answer should cite the document passage supporting it. A citation shows the source of a claim; it does not by itself prove that the claim is correct. When a question is not covered by these documents, the assistant should say that the available material does not confirm the answer. This demo corpus contains no refund policy, subscription prices, real customer data or live account information. Questions about those topics require additional source material.

@@ -1,0 +1,4 @@
+NimbusDesk fictional demo help centre — Export error EXP-104
+This document contains synthetic rules for a local demonstration.
+
+EXP-104 means that an export did not create a downloadable file. Check that the export has failed, then retry the export once. If the retry fails, contact the workspace Owner with the task identifier. Do not label the export as completed without a downloadable file. EXP-104 is an export error identifier, not a billing or payment error. The demo documentation does not prescribe a refund for this error.
