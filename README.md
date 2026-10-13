@@ -2,7 +2,7 @@
 
 把 SaaS 帮助文档变成可以提问、查看来源的知识助手。适合演示产品规则查询、操作排障，以及从文档中整理摘要、决策、风险和行动项。
 
-项目仓库：[JichaoChen1123/yuanda-rag-assistant](https://github.com/JichaoChen1123/yuanda-rag-assistant)。本项目基于 [PiriTnz/enterprise-rag-system](https://github.com/PiriTnz/enterprise-rag-system)，保留原 RAG 流水线和 [MIT 许可证](LICENSE)，增加官方 Codex CLI 的 ChatGPT 订阅接入、虚构 SaaS 演示文档和界面接线修复。
+项目仓库：[JichaoChen1123/yuanda-rag-assistant](https://github.com/JichaoChen1123/yuanda-rag-assistant)。
 
 ## 产品功能
 
@@ -22,16 +22,16 @@
 | 层次 | 本次演示使用的实现 |
 |---|---|
 | 后端 | Python 3.11、FastAPI、Pydantic |
-| 文档处理 | pypdf、python-docx、tiktoken，以及上游加载与分块模块 |
+| 文档处理 | pypdf、python-docx、tiktoken，以及项目加载与分块模块 |
 | 文档向量 | sentence-transformers；`BAAI/bge-small-en-v1.5`，384 维，CPU 计算 |
 | 向量存储 | Chroma 本地持久化 |
 | 混合检索 | `rank-bm25` 关键词检索 + 向量检索，使用加权 RRF 合并排序 |
 | 重排 | CrossEncoder；Plus 演示配置使用 `cross-encoder/ms-marco-MiniLM-L-6-v2`，CPU 计算 |
 | 答案生成 | 官方 Codex CLI，复用已登录的 ChatGPT 订阅 |
 | 演示界面 | Streamlit；另保留 React + TypeScript + Vite 界面 |
-| 评测与回归 | 上游评测框架、pytest、订阅适配器回归测试 |
+| 评测与回归 | 现有评测框架、pytest、订阅适配器回归测试 |
 
-上游 Qdrant、Ollama、OpenAI API 和 Anthropic API 适配器仍保留。它们未参与本次 Plus 演示；本次运行不需要购买模型 API 额度。
+Qdrant、Ollama、OpenAI API 和 Anthropic API 适配器仍保留。它们未参与本次 Plus 演示；本次运行不需要购买模型 API 额度。
 
 ## 保留的 RAG 流水线
 
@@ -73,7 +73,7 @@ $env:API_URL='http://127.0.0.1:8000'
 
 打开 [知识助手界面](http://127.0.0.1:8501/)，在 Upload 页上传 `demo-documents/` 中的五个 `.txt` 文件。API 说明见 [Swagger 页面](http://127.0.0.1:8000/docs)。
 
-Docker 配置保留自上游，未配置宿主机 Codex 登录与可执行文件的挂载，也未完成本次 Plus 路线验证。Plus 演示使用上述本机启动方式。
+现有 Docker 配置未配置宿主机 Codex 登录与可执行文件的挂载，也未完成本次 Plus 路线验证。Plus 演示使用上述本机启动方式。
 
 ## 已完成的验证
 
@@ -136,10 +136,15 @@ Invoke-RestMethod -Method Post -Uri 'http://127.0.0.1:8000/api/v1/query' -Conten
 - 本次验收使用本地单人环境、英文帮助文档、Streamlit、Chroma 和 ChatGPT 订阅；其他前端与后端组合可分别验证。
 - `.env`、`.private/` 和 `data/` 是本机配置、运行文件与索引位置，已加入 Git 忽略，不应发布。
 
-## 开源来源与本次改动
+<details>
+<summary>开源说明</summary>
+
+本项目基于 [PiriTnz/enterprise-rag-system](https://github.com/PiriTnz/enterprise-rag-system)，保留原 RAG 流水线和 [MIT 许可证](LICENSE)，增加官方 Codex CLI 的 ChatGPT 订阅接入、虚构 SaaS 演示文档和界面接线修复。
 
 原作者 [PiriTnz](https://github.com/PiriTnz) 提供的 [enterprise-rag-system](https://github.com/PiriTnz/enterprise-rag-system) 包含文档处理、分块、embedding、向量存储、BM25、RRF、CrossEncoder、引用、评测框架及两套前端。
 
 本仓库在此基础上增加 ChatGPT 订阅生成适配器、Plus 配置与说明、虚构演示文档、provider 回归测试，以及必要的界面接线和中文品牌调整。具体改动见提交历史。
 
 项目沿用 [MIT 许可证](LICENSE)，保留原作者的版权声明。
+
+</details>

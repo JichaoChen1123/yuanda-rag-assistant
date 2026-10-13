@@ -1,6 +1,6 @@
 # 源答 · SaaS 知识助手：Plus 启动与演示
 
-本文说明如何使用已有 ChatGPT 订阅运行 [yuanda-rag-assistant](https://github.com/JichaoChen1123/yuanda-rag-assistant)。文档解析、分块、向量检索、BM25、RRF、CrossEncoder、引用与评测流程保留自 [PiriTnz/enterprise-rag-system](https://github.com/PiriTnz/enterprise-rag-system)，生成层通过官方 Codex CLI 接入 ChatGPT。原项目的 [MIT 许可证](LICENSE) 和作者声明保留。
+本文说明如何使用已有 ChatGPT 订阅运行 [yuanda-rag-assistant](https://github.com/JichaoChen1123/yuanda-rag-assistant)。
 
 ## 1. 准备 Python 环境
 
@@ -12,7 +12,7 @@ python -m venv .venv
 .\.venv\Scripts\python.exe -m pip install -r requirements.txt "transformers==4.57.6"
 ```
 
-本机实测组合为 torch 2.4.1+cpu、sentence-transformers 3.1.1、transformers 4.57.6、chromadb 0.5.5。上述命令保留上游依赖，并固定实测的 Transformers 版本；其他传递依赖仍未形成完整锁文件。
+本机实测组合为 torch 2.4.1+cpu、sentence-transformers 3.1.1、transformers 4.57.6、chromadb 0.5.5。上述命令保留现有依赖，并固定实测的 Transformers 版本；其他传递依赖仍未形成完整锁文件。
 
 ## 2. 登录官方 Codex CLI
 
@@ -102,8 +102,15 @@ $env:API_URL='http://127.0.0.1:8000'
 
 订阅适配器强制 ChatGPT 登录，移除子进程中的 OpenAI/Codex API Key，并拒绝未完成的 CLI 结果。订阅用量限制仍适用。每次查询使用独立临时 CLI 会话，没有实现多轮记忆。
 
-结构化生成采用提示约束 + JSON 对象解析，没有使用原生严格 JSON Schema。CLI 适配器不执行上游接口的 `temperature`、`max_tokens` 采样参数。
+结构化生成采用提示约束 + JSON 对象解析，没有使用原生严格 JSON Schema。CLI 适配器不执行现有接口的 `temperature`、`max_tokens` 采样参数。
 
 界面的 confidence 是上游启发式分值，不是正确概率；评测的 citation correctness 只检查引用是否属于检索结果，不判断论断是否被证据支持。默认模型与实测题以英文为主，中文检索质量尚未验证。本项目没有 MCP、Function Calling、Dify/Coze 或模型训练能力。
 
-运行文件位于 `.private/`，索引位于 `data/`，本机配置位于 `.env`，这些位置均已加入 Git 忽略。上游其他 provider 适配器仍保留，但不参与上述 Plus 配置与验证。
+运行文件位于 `.private/`，索引位于 `data/`，本机配置位于 `.env`，这些位置均已加入 Git 忽略。其他 provider 适配器仍保留，但不参与上述 Plus 配置与验证。
+
+<details>
+<summary>开源说明</summary>
+
+文档解析、分块、向量检索、BM25、RRF、CrossEncoder、引用与评测流程保留自 [PiriTnz/enterprise-rag-system](https://github.com/PiriTnz/enterprise-rag-system)，生成层通过官方 Codex CLI 接入 ChatGPT。原项目的 [MIT 许可证](LICENSE) 和作者声明保留。
+
+</details>
