@@ -104,13 +104,6 @@ $env:API_URL='http://127.0.0.1:8000'
 
 结构化生成采用提示约束 + JSON 对象解析，没有使用原生严格 JSON Schema。CLI 适配器不执行现有接口的 `temperature`、`max_tokens` 采样参数。
 
-界面的 confidence 是上游启发式分值，不是正确概率；评测的 citation correctness 只检查引用是否属于检索结果，不判断论断是否被证据支持。默认模型与实测题以英文为主，中文检索质量尚未验证。本项目没有 MCP、Function Calling、Dify/Coze 或模型训练能力。
+界面的 confidence 是启发式分值，不是正确概率；评测的 citation correctness 只检查引用是否属于检索结果，不判断论断是否被证据支持。默认模型与实测题以英文为主，中文检索质量尚未验证。本项目没有 MCP、Function Calling、Dify/Coze 或模型训练能力。
 
 运行文件位于 `.private/`，索引位于 `data/`，本机配置位于 `.env`，这些位置均已加入 Git 忽略。其他 provider 适配器仍保留，但不参与上述 Plus 配置与验证。
-
-<details>
-<summary>开源说明</summary>
-
-文档解析、分块、向量检索、BM25、RRF、CrossEncoder、引用与评测流程保留自 [PiriTnz/enterprise-rag-system](https://github.com/PiriTnz/enterprise-rag-system)，生成层通过官方 Codex CLI 接入 ChatGPT。原项目的 [MIT 许可证](LICENSE) 和作者声明保留。
-
-</details>
