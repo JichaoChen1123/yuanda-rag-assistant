@@ -1,8 +1,4 @@
-"""Streamlit UI for the Enterprise RAG system.
-
-A pragmatic frontend for demos and internal teams. The React frontend
-(under frontend/react) is the production-style alternative.
-"""
+"""源答 · SaaS 知识助手的 Streamlit 演示界面。"""
 from __future__ import annotations
 
 import json
@@ -16,7 +12,7 @@ API_URL = os.environ.get("API_URL", "http://localhost:8000")
 
 
 st.set_page_config(
-    page_title="Enterprise RAG",
+    page_title="源答 · SaaS 知识助手",
     page_icon="📚",
     layout="wide",
 )
@@ -44,8 +40,8 @@ def api_post(path: str, payload: dict | None = None, files=None, params=None) ->
 # ---- sidebar ----
 
 with st.sidebar:
-    st.title("📚 Enterprise RAG")
-    st.caption("Hybrid retrieval + reranking + citations")
+    st.title("📚 源答 · SaaS 知识助手")
+    st.caption("查询产品规则与操作指引，查看回答来源")
 
     try:
         health = api_get("/health")

@@ -9,7 +9,7 @@ export function Sidebar({ health }: { health: Health | null }) {
 
   return (
     <aside className="sidebar">
-      <div className="brand">📚 Enterprise RAG</div>
+      <div className="brand">📚 源答 · SaaS 知识助手</div>
       <div className="status">
         {health ? (
           <>

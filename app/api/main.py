@@ -40,8 +40,7 @@ logger = get_logger(__name__)
 app = FastAPI(
     title=settings.app_name,
     version=settings.app_version,
-    description="Enterprise-grade Retrieval-Augmented Generation system "
-                "with hybrid search, reranking, citations, and evaluation.",
+    description="面向 SaaS 帮助文档的知识助手，支持混合检索、重排、来源引用与评测。",
 )
 
 app.add_middleware(

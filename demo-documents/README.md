@@ -1,5 +1,21 @@
-# Fictional help-centre corpus
+# 源答 · SaaS 知识助手：演示文档
 
-These five text files are synthetic test data for demonstrating ingestion, semantic and keyword retrieval, reranking, source citations and an out-of-scope question. They are not a real SaaS product's policies.
+本目录包含五份人工构造的英文帮助文档，用于演示 SaaS 产品规则问答与操作排障。文档中的 NimbusDesk 是虚构产品，所有角色、功能、错误码和规则均为演示数据，不代表任何真实公司的政策。
 
-Ingest the five `.txt` files with the existing API. Suggested checks: billing role; publication revisions; membership export; exact error `EXP-104`; missing refund policy. Small demo results do not establish production accuracy or a business improvement.
+## 导入方式
+
+在知识助手的 Upload 页选择本目录五个 `.txt` 文件，使用现有上传入库流程导入。此 README 是操作说明，无需作为演示知识导入。
+
+## 可检查的内容
+
+| 内容 | 用途 |
+|---|---|
+| 工作区角色 | 区分账单管理权限与 Editor 权限 |
+| 发布与版本 | 查询发布流程及修订规则 |
+| 成员导出 | 查询导出权限和操作要求 |
+| 错误码 `EXP-104` | 检查指定关键词检索与排障回答 |
+| 未提供的退款政策 | 检查文档范围外问题是否回答信息不足 |
+
+演示会经过文档分块、embedding、向量检索、BM25、RRF 融合、CrossEncoder 重排、订阅生成和引用提取。2026-10-13 本地验证共导入 5 份文档、5 个分块，并完成权限、错误码、信息不足和结构化摘要 4 个场景；具体输入和结果见 [Plus 启动与演示](../RUN_PLUS.md)。
+
+这些数据和场景用于检查功能是否跑通，不能证明生产准确率、中文检索质量、真实用户收益或相对 ChatGPT 的效果提升。

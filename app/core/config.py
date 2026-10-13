@@ -1,7 +1,6 @@
-"""Application configuration using pydantic-settings.
+"""源答 · SaaS 知识助手配置。
 
-All settings can be overridden via environment variables or .env file.
-Designed for enterprise deployments where secrets come from the environment.
+通过环境变量或 .env 覆盖设置，本机认证与配置不写入公开文档。
 """
 from __future__ import annotations
 
@@ -22,7 +21,7 @@ class Settings(BaseSettings):
     )
 
     # ---- App ----
-    app_name: str = "Enterprise RAG System"
+    app_name: str = "源答 · SaaS 知识助手"
     app_version: str = "0.1.0"
     environment: Literal["dev", "staging", "prod"] = "dev"
     log_level: str = "INFO"

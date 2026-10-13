@@ -19,9 +19,9 @@ export default function App() {
       <Sidebar health={health} />
       <main className="main">
         <header className="topbar">
-          <h1>Enterprise RAG</h1>
+          <h1>源答 · SaaS 知识助手</h1>
           <span className="subtitle">
-            Hybrid retrieval · Cross-encoder reranking · Cited answers
+            查询产品规则与操作指引，查看回答来源
           </span>
         </header>
 
